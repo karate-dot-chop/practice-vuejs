@@ -10,11 +10,15 @@
   </head>
   <body>
     <h1>Hello from HTML!</h1>
+    <!-- This is where vuejs code will run -->
     <div id="app">
-      <!-- This is where vuejs code will run -->
+      <!-- v-models / data variables -->
       <h3>{{ message }}</h3>
       <p>{{ name }}</p>
+      <!-- v-on click directive -->
       <button v-on:click="changeMessage">Change Message</button>
+      <!-- v-model input binding -->
+      <input type="text" v-model="name" />
     </div>
   </body>
 </html>
