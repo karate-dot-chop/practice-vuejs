@@ -19,6 +19,11 @@
       <button v-on:click="changeMessage">Change Message</button>
       <!-- v-model input binding -->
       <input type="text" v-model="name" />
+      <!-- v-if directive -->
+      <div>
+        <button v-on:click="showInfo = !showInfo">Toggle Info</button>
+        <p v-if="showInfo">Extra Information</p>
+      </div>
     </div>
   </body>
 </html>
