@@ -1,10 +1,10 @@
-console.log("Hello from JavaScript!");
-
+/* global Vue */
 var app = new Vue({
   el: "#app",
   data: function() {
     return {
-      message: "Hello from JavaScript!"
+      message: "Hello Vue JS!",
+      name: "Dani"
     };
   }
 });
