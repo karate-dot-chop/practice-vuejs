@@ -7,7 +7,8 @@ var app = new Vue({
       name: "Dani",
       showInfo: false,
       fruits: ["apple", "banana", "cantaloupe"],
-      newFruit: ""
+      newFruit: "",
+      todos: []
     };
   },
   methods: {
@@ -17,6 +18,12 @@ var app = new Vue({
     addNewFruit: function() {
       this.fruits.push(this.newFruit);
       this.newFruit = "";
+    },
+    loadTodos: function() {
+      axios.get("https://jsonplaceholder.typicode.com/todos").then(response => {
+        console.log(response.data);
+        this.todos = response.data;
+      });
     }
   }
 });

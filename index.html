@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Practice Vue.js</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="index.js" defer></script>
   </head>
   <style>
@@ -22,20 +23,31 @@
       <h3>{{ message }}</h3>
       <p>{{ name }}</p>
       <!-- v-on click directive -->
-      <button v-on:click="changeMessage">Change Message</button>
+      <button v-on:click="changeMessage()">Change Message</button>
       <!-- v-model input binding -->
       <input type="text" v-model="name" />
       <!-- v-if directive -->
       <div>
         <button v-on:click="showInfo = !showInfo">Toggle Info</button>
-        <p v-bind:class="{disabled: showInfo}">Extra Information</p>
+        <p v-bind:class="{disabled: showInfo}">
+          Extra Information for v-bind:class
+        </p>
+        <p v-if="showInfo">Extra Information for v-if</p>
       </div>
       <!-- v-for directive -->
       <div v-for="fruit in fruits">
         <p>{{ fruit }}</p>
       </div>
       <input type="text" v-model="newFruit" />
-      <button v-on:click="addNewFruit">Add Fruit</button>
+      <button v-on:click="addNewFruit()">Add Fruit</button>
+      <div>
+        <button v-on:click="loadTodos()">Load Todos</button>
+        <div v-for="todo in todos">
+          <p v-if="!todo.completed">
+            {{ todo.title }}, complete: {{ todo.completed }}
+          </p>
+        </div>
+      </div>
     </div>
   </body>
 </html>
