@@ -8,8 +8,17 @@ var app = new Vue({
       showInfo: false,
       fruits: ["apple", "banana", "cantaloupe"],
       newFruit: "",
-      todos: []
+      todos: [],
+      title: ""
     };
+  },
+  created: function() {
+    axios
+      .get("https://jsonplaceholder.typicode.com/todos")
+      .then(response => {
+        console.log(response.data);
+        this.todos = response.data;
+      });
   },
   methods: {
     changeMessage: function() {
@@ -19,11 +28,19 @@ var app = new Vue({
       this.fruits.push(this.newFruit);
       this.newFruit = "";
     },
-    loadTodos: function() {
-      axios.get("https://jsonplaceholder.typicode.com/todos").then(response => {
-        console.log(response.data);
-        this.todos = response.data;
-      });
+    createTodo: function() {
+      var params = {
+        userId: 1,
+        title: this.title,
+        completed: false
+      };
+      axios
+        .post("https://jsonplaceholder.typicode.com/todos", params)
+        .then(response => {
+          console.log(response.data);
+          this.todos.unshift(response.data);
+          this.title = "";
+        });
     }
   }
 });
